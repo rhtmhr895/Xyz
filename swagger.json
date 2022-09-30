@@ -1,0 +1,127 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Test API for Swagger Implementation",
+        "version": "1.0.0",
+        "title": "Tasks API",
+        "contact": {
+            "email": "abc@gmail.com"
+        },
+        "license": {
+            "name": "",
+            "url": ""
+        }
+    }
+,
+    
+    "schemes": ["http"],
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "paths" : {
+        "/signup": {
+            "post": {
+              "summary":"Register new user in the system",
+              "tags": [
+                "User"
+              ],
+              "description": "Create new user in system",
+              "parameters": [
+                {
+                  "name": "user",
+                  "in": "body",
+                  "description": "User that we want to create",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "200": {
+                  "description": "Registration successfull",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+    }
+    },
+       "/getuser":{
+            "get":{
+              "summary":"get all the users in the system",
+              "tags":[
+                "User"
+               ],
+             
+              "responses":{
+                "200":{
+                    "description":"OK"
+                  }
+               }  
+            }
+       },
+       "/update":{
+            "put":{
+              "summary": "Update user with given ID",
+              "tags":[
+                "User"
+              ],
+              "parameters": [
+                {
+                  "name": "user",
+                  "in": "body",
+                  "description": "Update user",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              ]
+            }
+       },
+       "/deleteAll":{
+            "delete":{
+                "summary": "Delete all users in the system",
+                "tags":[
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                      "description": "User is deleted",
+                      "schema": {
+                        "$ref": "#/definitions/User"
+                      }
+                    }
+                }
+
+            }
+
+       }
+    },
+    "definitions": {
+        "User": {
+          "required": [
+            "firstName",
+            "lastName",
+            "email",
+            "password"
+            
+          ],
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        }
+    }
+}
